@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-        <p>hello world</p>
+        <p>{{ $text }}</p>
         </div>
     </body>
 </html>
