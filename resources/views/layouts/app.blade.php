@@ -43,6 +43,9 @@
                             @endif
                         @else
                         <li class="nav-item">
+                            <a class="nav-link post-create" href="{{ route('posts.create') }}"><span class="far fa-edit mr-1"></span>投稿する</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
                         </li>
                         <li class="nav-item">

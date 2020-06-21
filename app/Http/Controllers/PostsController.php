@@ -20,4 +20,9 @@ class PostsController extends Controller
             'user'  =>  $user,
         ]);
     }
+
+    public function showCreateForm() {
+
+        return view('posts.create');
+    }
 }
