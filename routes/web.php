@@ -21,8 +21,9 @@ Route::get('{id}/post/{user_id}', 'PostsController@showArticle')->name('posts.ar
 /**
  * ログイン状態のチェック
  */
-// Route::group(['middleware' => 'auth'], function() {
-
-// });
+Route::group(['middleware' => 'auth'], function() {
+  Route::get('post/create', 'PostsController@showCreateForm')->name('posts.create');
+  Route::post('post/create', 'PostsController@create');
+});
 
 Auth::routes();

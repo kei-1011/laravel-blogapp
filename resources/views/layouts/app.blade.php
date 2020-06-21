@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-success shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -42,6 +42,9 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link post-create bg-primary" href="{{ route('posts.create') }}"><span class="far fa-edit mr-1"></span>投稿する</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
                         </li>
