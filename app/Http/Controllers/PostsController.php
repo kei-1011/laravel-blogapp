@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Posts;
 use App\Users;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,21 @@ class PostsController extends Controller
     }
 
     public function showCreateForm() {
-
         return view('posts.create');
+    }
+
+    public function create(Request $request) {
+
+        $posts = new Posts();
+
+        $posts->user_id = Auth::id();
+        $posts->body = $request->body;
+        $posts->title = $request->title;
+        $posts->created_at = Carbon::now();
+        $posts->updated_at = Carbon::now();
+
+        $posts->save();
+
+        return redirect()->route('home');
     }
 }
