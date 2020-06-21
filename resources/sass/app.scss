@@ -6,3 +6,28 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #f4f7f8;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.article {
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.article__heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.article__created-at {
+  color: #cdcdcd;
+}
+
+.article__head {
+  margin-bottom: 20px;
+}

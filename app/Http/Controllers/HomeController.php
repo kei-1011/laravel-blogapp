@@ -33,6 +33,7 @@ class HomeController extends Controller
         // modelクラスのallメソッドで全ての記事を取得
         $posts = Posts::all();
 
+        // テンプレートに全ての記事データを渡す
         return view('home', [
             'posts' =>  $posts,
         ]);
