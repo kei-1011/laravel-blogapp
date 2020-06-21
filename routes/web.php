@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// ホーム画面はログインなしでも閲覧可能
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function() {
+/**
+ * ログイン状態のチェック
+ */
+// Route::group(['middleware' => 'auth'], function() {
 
-  Route::get('/', 'HomeController@index')->name('home');
-});
+// });
 
 Auth::routes();
