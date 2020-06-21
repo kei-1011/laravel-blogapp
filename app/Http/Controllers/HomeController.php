@@ -13,7 +13,13 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        /**
+         *  ミドルウェアでログイン権限のチェック
+         *  ログインしていなかったら、return redirect()->guest('login');でログイン画面に飛ばされる
+         * */
+
+    //         $this->middleware('auth');
+
     }
 
     /**
