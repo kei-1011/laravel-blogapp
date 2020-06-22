@@ -24,6 +24,8 @@ Route::get('{id}/post/{user_id}', 'PostsController@showArticle')->name('posts.ar
 Route::group(['middleware' => 'auth'], function() {
   Route::get('post/create', 'PostsController@showCreateForm')->name('posts.create');
   Route::post('post/create', 'PostsController@create');
+
+  Route::get('{name}/items', 'PostsController@showArchives')->name('posts.archive');
 });
 
 Auth::routes();

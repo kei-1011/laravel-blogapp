@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Posts;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,15 @@ class PostsController extends Controller
 
     public function showCreateForm() {
         return view('posts.create');
+    }
+
+    // ユーザーが書いた記事一覧
+    public function showArchives() {
+        $posts = Auth::user()->posts()->get();
+
+        return view('posts.archive', [
+            'posts' =>  $posts,
+        ]);
     }
 
     public function create(Request $request) {

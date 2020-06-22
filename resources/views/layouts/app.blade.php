@@ -49,7 +49,7 @@
                             <a class="nav-link" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">記事一覧
+                            <a class="nav-link" href="{{ route('posts.archive',['name' => Auth::user()->name ])}}">記事一覧
                             </a>
                         </li>
                         <li class="nav-item">
