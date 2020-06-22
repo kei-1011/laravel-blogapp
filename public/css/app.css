@@ -17039,8 +17039,19 @@ body {
   background-color: #2176bd !important;
 }
 
-.excerpt {
+.home-article-list .list-group-item p {
   margin: 0;
+}
+
+.home-article-list .list-group-item .create_date {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.home-article-list .list-group-item .user {
+  font-size: 0.8rem;
+  color: #777;
 }
 
 .article {
