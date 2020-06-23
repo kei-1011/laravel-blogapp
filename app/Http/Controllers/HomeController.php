@@ -32,7 +32,6 @@ class HomeController extends Controller
     public function index()
     {
         // modelクラスのallメソッドで全ての記事を取得
-        // $posts = Posts::all();
         $posts = Posts::all();
 
         // テンプレートに全ての記事データを渡す
