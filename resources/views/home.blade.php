@@ -7,9 +7,9 @@
             <ul class="list-group">
                 @foreach($posts as $post)
             <li class="list-group-item">
-                <p class="create_date">{{ $post->created_at->format('Y年m月d日') }}</p>
-                <a href="{{ route('posts.article', ['id' => $post->id, 'user_id' => $post->user_id] ) }} ">{{ $post->title }}</a>
+                <a class='title' href="{{ route('posts.article', ['id' => $post->id, 'user_id' => $post->user_id] ) }} ">{{ $post->title }}</a>
                 <p class="excerpt">{{ $post->body }}</p>
+                <p class="create_date">{{ $post->created_at->format('Y年m月d日') }}</p>
             </li>
             @endforeach
             </ul>

@@ -17039,14 +17039,20 @@ body {
   background-color: #2176bd !important;
 }
 
-.home-article-list .list-group-item p {
-  margin: 0;
+.home-article-list .list-group-item .title {
+  margin-bottom: 0.7rem;
+  color: #333333;
+  font-size: 1.4rem;
+}
+
+.home-article-list .list-group-item .excerpt {
+  margin-bottom: 0.6rem;
 }
 
 .home-article-list .list-group-item .create_date {
-  text-align: right;
   font-size: 0.8rem;
   color: #777;
+  margin: 0;
 }
 
 .home-article-list .list-group-item .user {
