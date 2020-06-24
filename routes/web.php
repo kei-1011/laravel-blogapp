@@ -16,16 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 // ホーム画面はログインなしでも閲覧可能
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('{id}/post/{user_id}', 'PostsController@showArticle')->name('posts.article');
+Route::get('/{user}/items/{id}', 'PostsController@showArticle')->name('posts.article');
 
 /**
  * ログイン状態のチェック
  */
 Route::group(['middleware' => 'auth'], function() {
+  // 記事作成
   Route::get('post/create', 'PostsController@showCreateForm')->name('posts.create');
   Route::post('post/create', 'PostsController@create');
 
-  Route::get('{name}/items', 'PostsController@showArchives')->name('posts.archive');
+  //
+  Route::get('{user}/items', 'PostsController@showArchives')->name('posts.archive');
+
+  Route::get('/{user}/items/{id}/edit', 'PostsController@showEditForm')->name('posts.edit');
+  Route::post('/{user}/items/{id}/edit', 'PostsController@edit');
 });
 
 Auth::routes();

@@ -6,24 +6,32 @@ use App\Posts;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\EditPost;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\Presets\React;
 
 class PostsController extends Controller
 {
-    public function showArticle(int $id,int $user_id)
+    public function showArticle(string $user,int $id)
     {
         // getパラメータのidを元に記事データを取得、テンプレートに渡す
         $post = Posts::find($id);
-        $user = User::find($user_id);
 
         return view('posts.article', [
-            'post' =>  $post,
-            'user'  =>  $user,
+            'post' =>  $post
         ]);
     }
 
     public function showCreateForm() {
         return view('posts.create');
+    }
+
+    public function showEditForm(string $user,int $id) {
+        $post = Posts::find($id);
+
+        return view('posts.edit', [
+            'post' =>  $post,
+        ]);
     }
 
     // ユーザーが書いた記事一覧
@@ -48,5 +56,15 @@ class PostsController extends Controller
         $posts->save();
 
         return redirect()->route('home');
+    }
+
+    public function edit(string $user,int $id, Request $request) {
+    $post = Posts::find($id);
+
+    $post->title = $request->title;
+    $post->body = $request->body;
+    $post->save();
+
+    return redirect()->route('posts.archive',['user' => Auth::user()->name ]);
     }
 }

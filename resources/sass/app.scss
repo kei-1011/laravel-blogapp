@@ -24,11 +24,22 @@ body {
   background-color: #2176bd !important
 }
 
+.editor {
+  textarea#body {
+    min-height: 10rem;
+  }
+}
+
 .home-article-list {
 
-
-
   .list-group-item {
+
+    .posts_wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .title {
       margin-bottom: 0.7rem;
       color: rgb(51, 51, 51);
