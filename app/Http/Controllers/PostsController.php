@@ -24,11 +24,11 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function showEditForm(int $user, int $id) {
+    public function showEditForm(string $user,int $id) {
         $post = Posts::find($id);
 
         return view('posts.edit', [
-            'post' =>  $post
+            'post' =>  $post,
         ]);
     }
 

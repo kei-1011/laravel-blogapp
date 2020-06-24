@@ -17043,6 +17043,12 @@ body {
   min-height: 10rem;
 }
 
+.home-article-list .list-group-item .posts_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .home-article-list .list-group-item .title {
   margin-bottom: 0.7rem;
   color: #333333;
