@@ -4,15 +4,13 @@
 
 <div class="container home-article-list">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <p>{{ $user->name }}</p>
-                <p>{{ $user->email }}</p>
+        <div class="col-md-3">
+            <div class="profile-panel">
+                <p class='user_name'>{{ $user->name }}</p>
             </div>
 
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <ul class="list-group">
                 @foreach($posts as $post)
             <li class="list-group-item">
@@ -25,7 +23,6 @@
             </li>
             @endforeach
             </ul>
-        </div>
         </div>
     </div>
 </div>
