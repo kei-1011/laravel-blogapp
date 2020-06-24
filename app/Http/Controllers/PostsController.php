@@ -10,20 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
-    public function showArticle(int $id,int $user_id)
+    public function showArticle(string $user,int $id)
     {
         // getパラメータのidを元に記事データを取得、テンプレートに渡す
         $post = Posts::find($id);
-        $user = User::find($user_id);
 
         return view('posts.article', [
-            'post' =>  $post,
-            'user'  =>  $user,
+            'post' =>  $post
         ]);
     }
 
     public function showCreateForm() {
         return view('posts.create');
+    }
+
+    public function showEditForm(int $user, int $id) {
+        $post = Posts::find($id);
+
+        return view('posts.edit', [
+            'post' =>  $post
+        ]);
     }
 
     // ユーザーが書いた記事一覧

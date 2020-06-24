@@ -24,6 +24,12 @@ body {
   background-color: #2176bd !important
 }
 
+.editor {
+  textarea#body {
+    min-height: 10rem;
+  }
+}
+
 .home-article-list {
 
 

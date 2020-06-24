@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-          <form action="{{ route('posts.create') }}" method="POST">
+          <form action="{{ route('posts.create') }}" method="POST" class='create editor'>
             @csrf
             <div class="form-group">
               <input type="text" name="title" id="title" class='form-control' placeholder="タイトル"/>
