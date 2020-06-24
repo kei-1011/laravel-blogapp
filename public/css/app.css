@@ -17042,11 +17042,12 @@ body {
 .home-article-list .list-group-item .title {
   margin-bottom: 0.7rem;
   color: #333333;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .home-article-list .list-group-item .excerpt {
   margin-bottom: 0.6rem;
+  font-size: 0.8rem;
 }
 
 .home-article-list .list-group-item .create_date {
