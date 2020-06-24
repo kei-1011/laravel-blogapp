@@ -9,7 +9,7 @@
             <li class="list-group-item">
                 <a class='title' href="{{ route('posts.article', ['id' => $post->id, 'user_id' => $post->user_id] ) }} ">{{ $post->title }}</a>
                 <p class="excerpt">{{ $post->body }}</p>
-                <p>
+                <p class='mb-0'>
                     <span class="user">by {{ $post->user->name }}</span>
                     <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>
                 </p>
