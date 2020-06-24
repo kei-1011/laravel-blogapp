@@ -6,7 +6,9 @@ use App\Posts;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\EditPost;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\Presets\React;
 
 class PostsController extends Controller
 {
@@ -54,5 +56,15 @@ class PostsController extends Controller
         $posts->save();
 
         return redirect()->route('home');
+    }
+
+    public function edit(string $user,int $id, Request $request) {
+    $post = Posts::find($id);
+
+    $post->title = $request->title;
+    $post->body = $request->body;
+    $post->save();
+
+    return redirect()->route('posts.archive',['user' => Auth::user()->name ]);
     }
 }
