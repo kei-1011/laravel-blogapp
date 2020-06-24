@@ -7,6 +7,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\EditPost;
+use App\Http\Requests\CreatePost;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Ui\Presets\React;
 
@@ -43,7 +44,7 @@ class PostsController extends Controller
         ]);
     }
 
-    public function create(Request $request) {
+    public function create(CreatePost $request) {
 
         $posts = new Posts();
 
@@ -58,7 +59,7 @@ class PostsController extends Controller
         return redirect()->route('home');
     }
 
-    public function edit(string $user,int $id, Request $request) {
+    public function edit(string $user,int $id, EditPost $request) {
     $post = Posts::find($id);
 
     $post->title = $request->title;
