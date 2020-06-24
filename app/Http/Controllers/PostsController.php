@@ -36,7 +36,7 @@ class PostsController extends Controller
     }
 
     // ユーザーが書いた記事一覧
-    public function showArchives() {
+    public function showArchives(string $user) {
         $posts = Auth::user()->posts()->get();
 
         return view('posts.archive', [

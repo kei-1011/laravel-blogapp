@@ -83,3 +83,24 @@ body {
 .article__head {
   margin-bottom: 20px;
 }
+
+
+
+
+/*  profile
+----------------------------*/
+
+.profile-panel {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+
+  .user_name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #777;
+  }
+}
