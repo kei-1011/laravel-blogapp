@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 // ホーム画面はログインなしでも閲覧可能
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/{user}/items/{id}', 'PostsController@showArticle')->name('posts.article');
+Route::get('/{user}/{user_id}', 'UserController@showProfile')->name('author.profile');
 
 /**
  * ログイン状態のチェック
