@@ -14,24 +14,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// ホーム画面はログインなしでも閲覧可能
+// ログインなしでも閲覧可能
+// 記事一覧
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/{user}/items/{id}', 'PostsController@showArticle')->name('posts.article');
-Route::get('/{user_id}/{user}', 'UserController@showProfile')->name('author.profile');
+
+//ユーザープロフィール
+Route::get('{user}', 'UserController@showProfile')->name('author.profile');
+
+// 記事ページ
+Route::get('/{user}/posts/{id}', 'PostsController@showArticle')->name('posts.article');
 
 /**
  * ログイン状態のチェック
  */
 Route::group(['middleware' => 'auth'], function() {
-  // 記事作成
-  Route::get('/{user_id}/post/create', 'PostsController@showCreateForm')->name('posts.create');
-  Route::post('/{user_id}/post/create', 'PostsController@create');
+  // 記事一覧ページ
+  Route::get('/{user}/posts/', 'PostsController@showArchives')->name('posts.archive');
 
-  //
-  Route::get('/{user_id}/{user}/items', 'PostsController@showArchives')->name('posts.archive');
+  // 記事作成画面
+  Route::get('/{user}/posts/create', 'PostsController@showCreateForm')->name('posts.create');
+  Route::post('/{user}/posts/create', 'PostsController@create');
 
-  Route::get('/{user}/items/{id}/edit', 'PostsController@showEditForm')->name('posts.edit');
-  Route::post('/{user}/items/{id}/edit', 'PostsController@edit');
+  // 記事修正ページ
+  Route::get('/{user}/posts/edit/{id}', 'PostsController@showEditForm')->name('posts.edit');
+  Route::post('/{user}/posts/edit/{id}', 'PostsController@edit');
 });
 
 Auth::routes();
