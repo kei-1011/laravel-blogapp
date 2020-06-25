@@ -43,13 +43,13 @@
                             @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link post-create bg-primary" href="{{ route('posts.create') }}"><span class="far fa-edit mr-1"></span>投稿する</a>
+                            <a class="nav-link post-create bg-primary" href="{{ route('posts.create',['user_id' => Auth::id() ]) }}"><span class="far fa-edit mr-1"></span>投稿する</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('author.profile',['user_id' => Auth::id() ])}}">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a class="nav-link" href="{{ route('author.profile',['user_id' => Auth::id(), 'user' => Auth::user()->name ])}}">{{ Auth::user()->name }} <span class="caret"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('posts.archive',['user' => Auth::user()->name ])}}">記事一覧
+                            <a class="nav-link" href="{{ route('posts.archive',['user_id' => Auth::id(),'user' => Auth::user()->name ])}}">記事一覧
                             </a>
                         </li>
                         <li class="nav-item">

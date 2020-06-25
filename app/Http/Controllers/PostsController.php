@@ -23,7 +23,7 @@ class PostsController extends Controller
         ]);
     }
 
-    public function showCreateForm() {
+    public function showCreateForm(int $id) {
         return view('posts.create');
     }
 
@@ -36,7 +36,7 @@ class PostsController extends Controller
     }
 
     // ユーザーが書いた記事一覧
-    public function showArchives(string $user) {
+    public function showArchives(int $id, string $user) {
         $posts = Auth::user()->posts()->get();
 
         return view('posts.archive', [
