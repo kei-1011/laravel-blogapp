@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function showProfile(int $user_id) {
+    public function showProfile(string $user) {
 
-        $user = User::find($user_id);
+        $user = User::where('name',$user)->first();
         $posts = $user->posts()->get();
 
         return view('author.profile',[
