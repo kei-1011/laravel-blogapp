@@ -13,7 +13,7 @@
               </ul>
             </div>
           @endif
-          <form action="{{ route('posts.edit',['user' => $post->user->name, 'id' => $post->id ]) }}" method="POST" class='edit editor'>
+          <form action="{{ route('posts.edit',['user' => $post->user->name, 'user_id' => Auth::id(), 'id' => $post->id ]) }}" method="POST" class='edit editor'>
             @csrf
             <div class="form-group">
               <input type="text" name="title" id="title" class='form-control' placeholder="タイトル" value='{{ $post->title }}'/>
