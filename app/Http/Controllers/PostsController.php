@@ -19,15 +19,15 @@ class PostsController extends Controller
         $post = Posts::find($id);
 
         return view('posts.article', [
-            'post' =>  $post
+            'post' =>  $post,
         ]);
     }
 
-    public function showCreateForm(string $user) {
+    public function showCreateForm(string $user,int $user_id) {
         return view('posts.create');
     }
 
-    public function showEditForm(string $user,int $id) {
+    public function showEditForm(string $user,int $id,int $user_id) {
         $post = Posts::find($id);
 
         return view('posts.edit', [
@@ -36,7 +36,7 @@ class PostsController extends Controller
     }
 
     // ユーザーが書いた記事一覧
-    public function showArchives(string $user) {
+    public function showArchives(string $user,int $user_id) {
         $posts = Auth::user()->posts()->get();
 
         $user = User::where('name',$user)->first();
@@ -46,11 +46,11 @@ class PostsController extends Controller
         ]);
     }
 
-    public function create(CreatePost $request) {
+    public function create(string $user,int $user_id,CreatePost $request) {
 
         $posts = new Posts();
 
-        $posts->user_id = Auth::id();
+        $posts->user_id = $user_id;
         $posts->body = $request->body;
         $posts->title = $request->title;
         $posts->created_at = Carbon::now();
@@ -61,13 +61,16 @@ class PostsController extends Controller
         return redirect()->route('home');
     }
 
-    public function edit(string $user,int $id, EditPost $request) {
+    public function edit(string $user,int $user_id,int $id, EditPost $request) {
     $post = Posts::find($id);
 
     $post->title = $request->title;
     $post->body = $request->body;
     $post->save();
 
-    return redirect()->route('posts.archive',['user' => Auth::user()->name ]);
+    return redirect()->route('posts.archive',[
+        'user' => Auth::user()->name,
+        'user_id'   =>  Auth::id(),
+        ]);
     }
 }

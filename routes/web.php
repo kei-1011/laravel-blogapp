@@ -19,25 +19,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 //ユーザープロフィール
-Route::get('{user}', 'UserController@showProfile')->name('author.profile');
+Route::get('{user}/{user_id}', 'UserController@showProfile')->name('author.profile');
 
 // 記事ページ
-Route::get('/{user}/posts/{id}', 'PostsController@showArticle')->name('posts.article');
+Route::get('/{user}/{id}', 'PostsController@showArticle')->name('posts.article');
 
 /**
  * ログイン状態のチェック
  */
 Route::group(['middleware' => 'auth'], function() {
   // 記事一覧ページ
-  Route::get('/{user}/posts/', 'PostsController@showArchives')->name('posts.archive');
+  Route::get('{user}/{user_id}/posts/', 'PostsController@showArchives')->name('posts.archive');
 
   // 記事作成画面
-  Route::get('/{user}/posts/create', 'PostsController@showCreateForm')->name('posts.create');
-  Route::post('/{user}/posts/create', 'PostsController@create');
+  Route::get('/{user}/{user_id}/posts/create', 'PostsController@showCreateForm')->name('posts.create');
+  Route::post('/{user}/{user_id}/posts/create', 'PostsController@create');
 
   // 記事修正ページ
-  Route::get('/{user}/posts/edit/{id}', 'PostsController@showEditForm')->name('posts.edit');
-  Route::post('/{user}/posts/edit/{id}', 'PostsController@edit');
+  Route::get('/{user}/{user_id}/posts/edit/{id}', 'PostsController@showEditForm')->name('posts.edit');
+  Route::post('/{user}/{user_id}/posts/edit/{id}', 'PostsController@edit');
 });
 
 Auth::routes();
