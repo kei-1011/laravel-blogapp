@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 //ユーザープロフィール
-Route::get('{user}/{user_id}', 'UserController@showProfile')->name('author.profile');
+Route::get('{user}/profile/{user_id}', 'UserController@showProfile')->name('author.profile');
 
 // 記事ページ
 Route::get('/{user}/{id}', 'PostsController@showArticle')->name('posts.article');
