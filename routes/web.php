@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function() {
   // 記事修正ページ
   Route::get('/{user}/{user_id}/posts/edit/{id}', 'PostsController@showEditForm')->name('posts.edit');
   Route::post('/{user}/{user_id}/posts/edit/{id}', 'PostsController@edit');
+
+  Route::post('/following', 'FollowController@follow');
 });
 
 Auth::routes();
