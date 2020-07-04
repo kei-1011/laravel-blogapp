@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EditPost;
 use App\Http\Requests\CreatePost;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Ui\Presets\React;
+// use Laravel\Ui\Presets\React;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -73,4 +74,20 @@ class PostsController extends Controller
         'user_id'   =>  Auth::id(),
         ]);
     }
+
+    // 記事データを削除、テンプレートファイルをajaxに返す
+    public function delete(string $user,int $user_id, Request $request) {
+        foreach($request->delete_post as $post_id) {
+            DB::table('posts')->where('id', $post_id)->delete();
+        }
+
+        $posts = Auth::user()->posts()->get();
+
+        $user = User::where('name',$user)->first();
+
+        return view('posts.archive', [
+            'posts' =>  $posts
+        ]);
+    }
+
 }
