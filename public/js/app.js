@@ -49704,6 +49704,54 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(function () {
+  /**
+   *　記事一覧画面から削除対象をcheckboxで選択
+   */
+  $('input.delete_post').on('change', function () {
+    $('.sticky_delete_block').addClass('is-show'); // checkedを配列に格納
+
+    var delete_array = $('input.delete_post:checked').map(function () {
+      return $(this).data('id');
+    }).get(); // 選択中の項目数を表示
+
+    var count = delete_array.length;
+    $('#js_calc_delete_posts').text(count); // チェックが外れたらdelete_blockを非表示
+
+    if (count == 0) {
+      $('.sticky_delete_block').removeClass('is-show');
+    }
+  }); // 一括でチェックを外す（一括チェックは実装しない）
+
+  $('#js_reset_checkbox').on('click', function () {
+    $('input.delete_post:checked').prop('checked', false);
+    $('.sticky_delete_block').removeClass('is-show');
+  });
+  $('#ajax_post_delete').on('click', function () {
+    if (confirm("削除してもよろしいですか？")) {
+      var delete_array = $('input.delete_post:checked').map(function () {
+        return $(this).data('id');
+      }).get();
+      var user = $('.navbar-nav .nav-item #username').data('name');
+      var user_id = $('.navbar-nav .nav-item #username').data('id');
+      $.ajax({
+        type: 'POST',
+        url: "/".concat(user, "/").concat(user_id, "/posts"),
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+          delete_post: delete_array
+        },
+        dataType: 'html'
+      }).done(function (res) {
+        $('body').html(res);
+      }).fail(function (XMLHttpRequest, textStatus, error) {
+        alert(error);
+      });
+    }
+  });
+});
 
 /***/ }),
 

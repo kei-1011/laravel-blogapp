@@ -30,6 +30,7 @@ Route::get('/{user}/{id}', 'PostsController@showArticle')->name('posts.article')
 Route::group(['middleware' => 'auth'], function() {
   // 記事一覧ページ
   Route::get('{user}/{user_id}/posts/', 'PostsController@showArchives')->name('posts.archive');
+  Route::post('{user}/{user_id}/posts/', 'PostsController@delete');
 
   // 記事作成画面
   Route::get('/{user}/{user_id}/posts/create', 'PostsController@showCreateForm')->name('posts.create');
@@ -39,7 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('/{user}/{user_id}/posts/edit/{id}', 'PostsController@showEditForm')->name('posts.edit');
   Route::post('/{user}/{user_id}/posts/edit/{id}', 'PostsController@edit');
 
-  Route::post('/following', 'FollowController@follow');
+  // Route::post('/following', 'FollowController@follow');
 });
 
 Auth::routes();
