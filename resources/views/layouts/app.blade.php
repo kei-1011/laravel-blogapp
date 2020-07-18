@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="account_logo" href="{{ route('setting.account') }}"><img src="{{ asset('/images/user/user.png') }}" alt="ロゴ"></a>
+                            <a class="account_logo" href="{{ route('setting.account') }}"><img src="{{Auth::user()->profile_image}}" alt=""></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"

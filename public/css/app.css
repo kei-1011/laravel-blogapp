@@ -17159,3 +17159,34 @@ body {
   color: #fff;
 }
 
+/* settion account
+-----------------------------*/
+
+.btn-wrap {
+  text-align: right;
+}
+
+.btn-wrap button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.profile_image {
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.profile_image img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+

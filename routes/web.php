@@ -18,12 +18,6 @@ use Illuminate\Support\Facades\Route;
 // 記事一覧
 Route::get('/', 'HomeController@index')->name('home');
 
-// 記事ページ
-Route::get('/{id}', 'PostsController@showArticle')->name('posts.article');
-
-//ユーザープロフィール
-Route::get('{user}/profile/{user_id}', 'UserController@showProfile')->name('author.profile');
-
 /**
  * ログイン状態のチェック
  */
@@ -49,3 +43,9 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Auth::routes();
+
+//ユーザープロフィール
+Route::get('{user}/profile/{user_id}', 'UserController@showProfile')->name('author.profile');
+
+// 記事ページ
+Route::get('/{id}', 'PostsController@showArticle')->name('posts.article');
