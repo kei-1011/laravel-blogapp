@@ -49733,10 +49733,9 @@ $(function () {
         return $(this).data('id');
       }).get();
       var user = $('.navbar-nav .nav-item #username').data('name');
-      var user_id = $('.navbar-nav .nav-item #username').data('id');
       $.ajax({
         type: 'POST',
-        url: "/".concat(user, "/").concat(user_id, "/posts"),
+        url: "/".concat(user, "/posts/"),
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },

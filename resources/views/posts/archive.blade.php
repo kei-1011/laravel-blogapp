@@ -21,7 +21,7 @@
                   </p>
                 </div>
                 <div class="posts_edit">
-                  <a href="{{ route('posts.edit', ['user' => Auth::user()->name, 'id' => $post->id, 'user_id' => Auth::id()] ) }}" class="edit_button">編集</a>
+                  <a href="{{ route('posts.edit', ['id' => $post->id] ) }}" class="edit_button">編集</a>
                 </div>
               </div>
             </li>

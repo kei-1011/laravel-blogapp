@@ -67,10 +67,9 @@ $(function () {
                 return $(this).data('id');
                 }).get();
             let user = $('.navbar-nav .nav-item #username').data('name');
-            let user_id = $('.navbar-nav .nav-item #username').data('id');
             $.ajax({
                 type: 'POST',
-                url: `/${user}/${user_id}/posts`,
+                url: `/${user}/posts/`,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
