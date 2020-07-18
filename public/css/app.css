@@ -17113,6 +17113,34 @@ body {
   color: #777;
 }
 
+.btn-wrap {
+  text-align: right;
+}
+
+.btn-wrap button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.profile_image {
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.profile_image img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
 /*  delete post
 ----------------------------*/
 
@@ -17162,31 +17190,20 @@ body {
 /* settion account
 -----------------------------*/
 
-.btn-wrap {
-  text-align: right;
+.account-setting {
+  padding: 40px;
 }
 
-.btn-wrap button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+.account-setting .title {
+  font-size: 24px;
 }
 
-.profile_image {
-  width: 100px;
-  margin: 0 auto;
-  border-radius: 100%;
+.account-setting .title .name {
+  font-weight: bold;
 }
 
-.profile_image img {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  height: auto;
+.account-setting .account-setting-form label {
+  font-weight: bold;
+  font-size: 14px;
 }
 

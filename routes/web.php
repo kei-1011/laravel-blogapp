@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function() {
 
   // アカウント情報設定ページ
   Route::get('/setting/account', 'SettingController@showSettingForm')->name('setting.account');
+  Route::post('/setting/account', 'SettingController@setting');
 
   // 記事一覧ページ
   Route::get('/{user}/posts/', 'PostsController@showArchives')->name('posts.archive');
