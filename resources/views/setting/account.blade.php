@@ -11,7 +11,7 @@
                     <span>　アカウント情報編集</span>
                 </div>
 
-                <form action="{{route('setting.account')}}" method="POST" class="account-setting-form">
+                <form action="{{route('setting.account')}}" method="POST" class="account-setting-form" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
                         <label for="screen_name">名前</label>
@@ -29,15 +29,17 @@
                         <label for="referral">自己紹介</label>
                         <textarea name="referral" id="referral" class="form-control">{{Auth::user()->referral}}</textarea>
                     </div>
-                    <div class="row form-group">
+                    <div class="mb-4">
                         <label for="profile_image">プロフィール画像</label>
-                            <img src="{{Auth::user()->profile_image}}" alt="">
+                        <img class="profile-image" src="/storage/images/user/{{Auth::user()->profile_image}}" alt="{{Auth::user()->screen_name}}">
                         </div>
                     <div class="row form-group mb-5">
                         <input type="file" name="profile_image" id="profile_image">
                     </div>
 
-                    <input type="submit" value="更新する" class="btn btn-primary">
+                    <div class="text-right">
+                        <input type="submit" value="更新する" class="btn btn-primary">
+                    </div>
                 </form>
             </div>
         </div>

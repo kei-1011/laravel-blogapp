@@ -17135,6 +17135,7 @@ body {
 }
 
 .profile_image img {
+  border-radius: 100%;
   display: block;
   margin: 0 auto;
   width: 100%;
@@ -17205,5 +17206,9 @@ body {
 .account-setting .account-setting-form label {
   font-weight: bold;
   font-size: 14px;
+}
+
+.account-setting .account-setting-form .profile-image {
+  display: block;
 }
 

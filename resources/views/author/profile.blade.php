@@ -12,7 +12,7 @@
                     </button>
                 </div> --}}
                 <p class="profile_image mb-3">
-                    <img src="{{$user->profile_image}}" alt="">
+                    <img src="/storage/images/user/{{$user->profile_image}}" alt="">
                 </p>
                 <p class="screen_name mb-0 text-center">{{$user->screen_name}}</p>
                 <p class="name text-center">{{$user->name}}</p>

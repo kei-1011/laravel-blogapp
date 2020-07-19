@@ -25,9 +25,11 @@ class SettingController extends Controller
         $user->email = $request->email;
         $user->twitter = $request->twitter;
         $user->referral = $request->referral;
-
         if ($request->profile_image !=null) {
-            $request->profile_image->storeAs('public/images', Auth::user()->id . '.jpg');
+            // ファイルを保存
+            $request->file('profile_image')->storeAs('public/images/user', $user->id . '.jpg');
+
+            // db にファイルパスを保存
             $user->profile_image = Auth::user()->id . '.jpg';
         }
         $user->save();
