@@ -43,14 +43,17 @@
                             @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link post-create bg-primary" href="{{ route('posts.create',['user' => Auth::user()->name , 'user_id' => Auth::id()]) }}"><span class="far fa-edit mr-1"></span>投稿する</a>
+                            <a class="nav-link post-create bg-primary" href="{{ route('posts.create') }}"><span class="far fa-edit mr-1"></span>投稿する</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                         <a id="username" data-id="{{ Auth::id() }}" data-name="{{ Auth::user()->name }}" class="nav-link" href="{{ route('author.profile',['user' => Auth::user()->name , 'user_id' => Auth::id()])}}">{{ Auth::user()->name }} <span class="caret"></span></a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('posts.archive',['user' => Auth::user()->name])}}">記事一覧
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('posts.archive',['user' => Auth::user()->name, 'user_id' => Auth::id() ])}}">記事一覧
-                            </a>
+                            <a class="account_logo" href="{{ route('author.profile',['user' => Auth::user()->name , 'user_id' => Auth::id()])}}"><img class="profile_image" src="/storage/images/user/{{Auth::user()->profile_image}}" alt="{{Auth::user()->screen_name}}"></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"

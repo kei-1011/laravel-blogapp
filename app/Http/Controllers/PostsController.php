@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
-    public function showArticle(string $user,int $id)
+    public function showArticle(int $id)
     {
         // getパラメータのidを元に記事データを取得、テンプレートに渡す
         $post = Posts::find($id);
@@ -24,11 +24,11 @@ class PostsController extends Controller
         ]);
     }
 
-    public function showCreateForm(string $user,int $user_id) {
+    public function showCreateForm() {
         return view('posts.create');
     }
 
-    public function showEditForm(string $user,int $id,int $user_id) {
+    public function showEditForm(int $id) {
         $post = Posts::find($id);
 
         return view('posts.edit', [
@@ -37,7 +37,7 @@ class PostsController extends Controller
     }
 
     // ユーザーが書いた記事一覧
-    public function showArchives(string $user,int $user_id) {
+    public function showArchives(string $user) {
         $posts = Auth::user()->posts()->get();
 
         $user = User::where('name',$user)->first();
@@ -47,11 +47,11 @@ class PostsController extends Controller
         ]);
     }
 
-    public function create(string $user,int $user_id,CreatePost $request) {
+    public function create(CreatePost $request) {
 
         $posts = new Posts();
 
-        $posts->user_id = $user_id;
+        $posts->user_id = Auth::user()->id;
         $posts->body = $request->body;
         $posts->title = $request->title;
         $posts->created_at = Carbon::now();
@@ -62,7 +62,7 @@ class PostsController extends Controller
         return redirect()->route('home');
     }
 
-    public function edit(string $user,int $user_id,int $id, EditPost $request) {
+    public function edit(int $id, EditPost $request) {
     $post = Posts::find($id);
 
     $post->title = $request->title;
@@ -76,14 +76,12 @@ class PostsController extends Controller
     }
 
     // 記事データを削除、テンプレートファイルをajaxに返す
-    public function delete(string $user,int $user_id, Request $request) {
+    public function delete(Request $request) {
         foreach($request->delete_post as $post_id) {
             DB::table('posts')->where('id', $post_id)->delete();
         }
 
         $posts = Auth::user()->posts()->get();
-
-        $user = User::where('name',$user)->first();
 
         return view('posts.archive', [
             'posts' =>  $posts

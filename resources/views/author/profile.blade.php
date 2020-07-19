@@ -6,8 +6,26 @@
     <div class="row justify-content-center">
         <div class="col-md-3">
             <div class="profile-panel text-center">
-                <p class='user_name' id='username' data-id='{{ $user->id }}'>{{ $user->name }}</p>
-                <button type='button' id='follow_btn' class='btn btn-primary'>フォローする</button>
+                {{-- <div class="btn-wrap">
+                    <button type="button" id="ac-menu_open">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div> --}}
+                <p class="profile_image mb-3">
+                    <img src="/storage/images/user/{{$user->profile_image}}" alt="">
+                </p>
+                <p class="screen_name mb-0 text-center">{{$user->screen_name}}</p>
+                <p class="name text-center">{{$user->name}}</p>
+                <p class="twitter text-center">
+                    <a href="https://twitter.com/{{$user->twitter}}"><i class="fab fa-twitter"></i></a>
+                </p>
+                <p class="referral">{{$user->referral}}</p>
+                @if (Auth::check())
+                    <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
+
+                @else
+                    <button type='button' id='follow_btn' class='btn btn-primary'>フォローする</button>
+                @endif
             </div>
 
         </div>

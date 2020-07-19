@@ -13,7 +13,7 @@
               </ul>
             </div>
           @endif
-          <form action="{{ route('posts.create',['user' => Auth::user()->name , 'user_id' => Auth::id()]) }}" method="POST" class='create editor'>
+          <form action="{{ route('posts.create') }}" method="POST" class='create editor'>
             @csrf
             <div class="form-group">
               <input type="text" name="title" id="title" class='form-control' placeholder="タイトル"/>

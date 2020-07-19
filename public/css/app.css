@@ -17043,6 +17043,11 @@ body {
   min-height: 10rem;
 }
 
+.account_logo img {
+  width: 40px;
+  height: auto;
+}
+
 .home-article-list .list-group-item .posts_wrap {
   display: flex;
   align-items: center;
@@ -17108,6 +17113,35 @@ body {
   color: #777;
 }
 
+.btn-wrap {
+  text-align: right;
+}
+
+.btn-wrap button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.profile_image {
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.profile_image img {
+  border-radius: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
 /*  delete post
 ----------------------------*/
 
@@ -17152,5 +17186,29 @@ body {
   padding: 2px 20px;
   border-radius: 20px;
   color: #fff;
+}
+
+/* settion account
+-----------------------------*/
+
+.account-setting {
+  padding: 40px;
+}
+
+.account-setting .title {
+  font-size: 24px;
+}
+
+.account-setting .title .name {
+  font-weight: bold;
+}
+
+.account-setting .account-setting-form label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.account-setting .account-setting-form .profile-image {
+  display: block;
 }
 
