@@ -17043,9 +17043,47 @@ body {
   min-height: 10rem;
 }
 
-.account_logo img {
+img.account_logo {
   width: 40px;
   height: auto;
+}
+
+.account_menus {
+  position: relative;
+}
+
+.account_menus #account_menu {
+  cursor: pointer;
+}
+
+.account_menus .account_menu {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #fff;
+  width: 170px;
+  z-index: 5;
+  padding: 10px 0;
+  box-shadow: 1px 2px 6px #ccc;
+  border-radius: 4px;
+}
+
+.account_menus .account_menu.is-open {
+  display: block;
+}
+
+.account_menus .account_menu li a {
+  color: #333;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.4s;
+}
+
+.account_menus .account_menu li a:hover {
+  background-color: #eee;
 }
 
 .home-article-list .list-group-item .posts_wrap {

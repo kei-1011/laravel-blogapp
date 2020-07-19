@@ -29,9 +29,48 @@ body {
     min-height: 10rem;
   }
 }
-.account_logo img {
-  width: 40px;
-  height: auto;
+img.account_logo {
+    width: 40px;
+    height: auto;
+}
+
+.account_menus {
+  position: relative;
+
+  #account_menu {
+    cursor: pointer;
+  }
+  .account_menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    width: 170px;
+    z-index: 5;
+    padding: 10px 0;
+    box-shadow: 1px 2px 6px #ccc;
+    border-radius: 4px;
+
+    &.is-open {
+      display: block;
+    }
+
+    li {
+      a {
+        color: #333;
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        transition: background-color 0.4s;
+
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
 }
 
 .home-article-list {

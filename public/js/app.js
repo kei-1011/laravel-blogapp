@@ -49750,6 +49750,13 @@ $(function () {
       });
     }
   });
+  /**
+   * アカウントメニューの展開
+   */
+
+  $('#account_menu').on('click', function () {
+    $('ul.account_menu').toggleClass('is-open');
+  });
 });
 
 /***/ }),

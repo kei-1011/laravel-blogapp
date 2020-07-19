@@ -61,11 +61,11 @@ $(function () {
     });
 
     $('#ajax_post_delete').on('click', function () {
-        if(confirm("削除してもよろしいですか？")) {
+        if (confirm("削除してもよろしいですか？")) {
 
             let delete_array = $('input.delete_post:checked').map(function () {
                 return $(this).data('id');
-                }).get();
+            }).get();
             let user = $('.navbar-nav .nav-item #username').data('name');
             $.ajax({
                 type: 'POST',
@@ -74,7 +74,7 @@ $(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    delete_post:delete_array,
+                    delete_post: delete_array,
                 },
                 dataType: 'html'
             }).done(function (res) {
@@ -84,6 +84,14 @@ $(function () {
                 alert(error);
             });
         }
-    })
+    });
+
+
+    /**
+     * アカウントメニューの展開
+     */
+    $('#account_menu').on('click', function () {
+            $('ul.account_menu').toggleClass('is-open');
+    });
 
 });

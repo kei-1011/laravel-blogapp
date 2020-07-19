@@ -42,24 +42,32 @@
                                 </li>
                             @endif
                         @else
-                        <li class="nav-item">
+                        <li class="nav-item mr-4">
                             <a class="nav-link post-create bg-primary" href="{{ route('posts.create') }}"><span class="far fa-edit mr-1"></span>投稿する</a>
                         </li>
                         {{-- <li class="nav-item">
                         <a id="username" data-id="{{ Auth::id() }}" data-name="{{ Auth::user()->name }}" class="nav-link" href="{{ route('author.profile',['user' => Auth::user()->name , 'user_id' => Auth::id()])}}">{{ Auth::user()->name }} <span class="caret"></span></a>
                         </li> --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('posts.archive',['user' => Auth::user()->name])}}">記事一覧
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="account_logo" href="{{ route('author.profile',['user' => Auth::user()->name , 'user_id' => Auth::id()])}}"><img class="profile_image" src="/storage/images/user/{{Auth::user()->profile_image}}" alt="{{Auth::user()->screen_name}}"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">ログアウト
-                            </a>
+                        <li class="nav-item account_menus mr-4">
+                            <img id="account_menu" class="profile_image account_logo" src="/storage/images/user/{{Auth::user()->profile_image}}" alt="{{Auth::user()->screen_name}}">
+
+                            <ul class="account_menu">
+                                <li>
+                                    <a href="{{ route('posts.archive',['user' => Auth::user()->name])}}">記事一覧</a>
+                                </li>
+                                <li>
+                                    <a class="account_logo" href="{{ route('author.profile',['user' => Auth::user()->name , 'user_id' => Auth::id()])}}">プロフィール</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('setting.account')}}" class="account-settiong">プロフィール編集</a>
+                                </li>
+                                <li class="logout_menu">
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">ログアウト
+                                </a>
+                                </li>
+                            </ul>
                         </li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
