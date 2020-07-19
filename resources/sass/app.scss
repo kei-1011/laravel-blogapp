@@ -34,6 +34,13 @@ img.account_logo {
     height: auto;
 }
 
+.navbar-nav {
+  flex-direction: row;
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+  }
+}
 .account_menus {
   position: relative;
 
