@@ -49732,7 +49732,7 @@ $(function () {
       var delete_array = $('input.delete_post:checked').map(function () {
         return $(this).data('id');
       }).get();
-      var user = $('.navbar-nav .nav-item #username').data('name');
+      var user = $('#account_menu').data('name');
       $.ajax({
         type: 'POST',
         url: "/".concat(user, "/posts/"),
@@ -49763,7 +49763,7 @@ $(function () {
 
   $(document).on('click', '.add_like', function () {
     var post_id = $(this).attr("data-post");
-    var user_id = $(this).attr("data-user");
+    var user_id = $('#account_menu').data('id');
     var icon = $(this).find('i');
     var count = $(this).next('.like_count');
     $(this).removeClass('add_like');
@@ -49784,7 +49784,7 @@ $(function () {
       dataType: 'json'
     }).done(function (res) {
       count.text(res.count);
-      $('#like-id_' + post_id).text(res.like_id); // $(this).attr("data-like",res.like_id);
+      $('#like-id_' + post_id).text(res.like_id);
     }).fail(function (XMLHttpRequest, textStatus, error) {
       alert(error);
     });
@@ -49795,7 +49795,7 @@ $(function () {
 
   $(document).on('click', '.remove_like', function () {
     var post_id = $(this).attr("data-post");
-    var user_id = $(this).attr("data-user");
+    var user_id = $('#account_menu').data('id');
     var like_id = $('#like-id_' + post_id).text();
     var icon = $(this).find('i');
     var count = $(this).next('.like_count');

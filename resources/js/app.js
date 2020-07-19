@@ -66,7 +66,7 @@ $(function () {
             let delete_array = $('input.delete_post:checked').map(function () {
                 return $(this).data('id');
             }).get();
-            let user = $('.navbar-nav .nav-item #username').data('name');
+            let user = $('#account_menu').data('name');
             $.ajax({
                 type: 'POST',
                 url: `/${user}/posts/`,
@@ -98,8 +98,8 @@ $(function () {
      * いいね機能
      */
     $(document).on('click', '.add_like', function () {
-        var post_id = $(this).attr("data-post");
-        var user_id = $(this).attr("data-user");
+        let post_id = $(this).attr("data-post");
+        let user_id = $('#account_menu').data('id');
         let icon = $(this).find('i');
         let count = $(this).next('.like_count');
 
@@ -123,7 +123,6 @@ $(function () {
         }).done(function (res) {
             count.text(res.count);
             $('#like-id_' + post_id).text(res.like_id);
-            // $(this).attr("data-like",res.like_id);
         }).fail(function (XMLHttpRequest, textStatus, error) {
             alert(error);
         });
@@ -133,9 +132,9 @@ $(function () {
      * いいね削除機能
      */
     $(document).on('click', '.remove_like', function () {
-        var post_id = $(this).attr("data-post");
-        var user_id = $(this).attr("data-user");
-        var like_id = $('#like-id_' + post_id).text();
+        let post_id = $(this).attr("data-post");
+        let user_id = $('#account_menu').data('id');
+        let like_id = $('#like-id_' + post_id).text();
 
         let icon = $(this).find('i');
         let count = $(this).next('.like_count');

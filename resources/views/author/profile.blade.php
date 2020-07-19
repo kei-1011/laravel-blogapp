@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container home-article-list">
+<div class="container profile-posts-list">
     <div class="row justify-content-center">
         <div class="col-md-3">
             <div class="profile-panel text-center">
@@ -25,6 +25,14 @@
 
         </div>
         <div class="col-md-9">
+            <ul class="posts-list-menu">
+                <li>
+                    <a href="{{ route('author.profile',['user' => $user->name , 'user_id' => $user->id])}}">全ての投稿</a>
+                </li>
+                <li>
+                    <a href="{{ route('author.likes',['user' => $user->name , 'user_id' => $user->id])}}">いいね</a>
+                </li>
+            </ul>
             <ul class="list-group">
                 @foreach($posts as $post)
             <li class="list-group-item">
@@ -34,18 +42,23 @@
                     <span class="user">by {{ $user->name }}</span>
                     <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>
                     <span class="like btn-wrap">
-                        @if ($post->likedBy(Auth::user())->count() > 0)
-                        {{-- いいね済 --}}
-                            <button type="button" class="remove_like" data-user="{{$post->user->id}}" data-post="{{$post->id}}"><i class="fas fa-heart liked"></i>
-                            </button>
-                            <span class="like_count">{{$post->likeCount()}}</span>
-                            <span class="js-like_id" id="like-id_{{$post->id}}">
-                                {{ $post->getLikeId(Auth::user()) }}
-                            </span>
+                        @if(Auth::check())
+                            @if ($post->likedBy(Auth::user()) > 0)
+                            {{-- いいね済 --}}
+                                <button type="button" class="remove_like" data-user="{{$post->user->id}}" data-post="{{$post->id}}"><i class="fas fa-heart liked"></i>
+                                </button>
+                                <span class="like_count">{{$post->likeCount()}}</span>
+                                <span class="js-like_id" id="like-id_{{$post->id}}">
+                                    {{ $post->getLikeId(Auth::user()) }}
+                                </span>
                             @else
-                            <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
-                            </button>
-                            <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                                <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
+                                </button>
+                                <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                            @endif
+                        @else
+                            <i class="far fa-heart like-icon"></i>
+                            <span class="like_count">{{$post->likeCount()}}</span>
                         @endif
                     </span>
                 </p>

@@ -13,18 +13,23 @@
                     <span class="user">by <a href="{{ route('author.profile',['user' => $post->user->name , 'user_id' => $post->user->id])}}">{{ $post->user->name }}</a></span>
                     <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>
                     <span class="like btn-wrap">
-                        @if ($post->likedBy(Auth::user())->count() > 0)
-                        {{-- いいね済 --}}
-                            <button type="button" class="remove_like" data-user="{{$post->user->id}}" data-post="{{$post->id}}"><i class="fas fa-heart liked"></i>
-                            </button>
-                            <span class="like_count">{{$post->likeCount()}}</span>
-                            <span class="js-like_id" id="like-id_{{$post->id}}">
-                                {{ $post->getLikeId(Auth::user()) }}
-                            </span>
+                        @if(Auth::check())
+                            @if ($post->likedBy(Auth::user()) > 0)
+                            {{-- いいね済 --}}
+                                <button type="button" class="remove_like" data-user="{{$post->user->id}}" data-post="{{$post->id}}"><i class="fas fa-heart liked"></i>
+                                </button>
+                                <span class="like_count">{{$post->likeCount()}}</span>
+                                <span class="js-like_id" id="like-id_{{$post->id}}">
+                                    {{ $post->getLikeId(Auth::user()) }}
+                                </span>
                             @else
-                            <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
-                            </button>
-                            <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                                <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
+                                </button>
+                                <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                            @endif
+                        @else
+                            <i class="far fa-heart like-icon"></i>
+                            <span class="like_count">{{$post->likeCount()}}</span>
                         @endif
                     </span>
                 </p>

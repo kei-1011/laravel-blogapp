@@ -17209,6 +17209,28 @@ img.account_logo {
   height: auto;
 }
 
+.profile-posts-list .posts-list-menu {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  background: #fff;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: none;
+}
+
+.profile-posts-list .posts-list-menu li a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  transition: background-color 0.4s;
+}
+
+.profile-posts-list .posts-list-menu li a:hover {
+  background-color: #eee;
+}
+
 /*  delete post
 ----------------------------*/
 
