@@ -80,8 +80,8 @@ img.account_logo {
   }
 }
 
-.home-article-list {
-
+// .home-article-list {
+// }
   .list-group-item {
 
     .posts_wrap {
@@ -111,9 +111,28 @@ img.account_logo {
       font-size: 0.8rem;
       color: #777;
     }
+
+    .like {
+      vertical-align: middle;
+
+      .like-icon {
+        color: #777;
+      }
+
+      .liked {
+        color: #E1255E;
+      }
+
+      .like_count {
+        color: #777;
+        font-size: 0.9rem;
+      }
+      .js-like_id {
+        display: none;
+      }
+    }
   }
 
-}
 
 .article {
   background-color: #fff;
@@ -181,6 +200,33 @@ img.account_logo {
   }
 }
 
+
+.profile-posts-list {
+  .posts-list-menu {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    background: #fff;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: none;
+
+    li {
+
+      a{
+        text-decoration: none;
+        display: block;
+        padding: 10px 20px;
+        color: #333;
+        transition: background-color 0.4s;
+
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}
 
 
 /*  delete post

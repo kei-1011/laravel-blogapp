@@ -17094,32 +17094,53 @@ img.account_logo {
   background-color: #eee;
 }
 
-.home-article-list .list-group-item .posts_wrap {
+.list-group-item .posts_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.home-article-list .list-group-item .title {
+.list-group-item .title {
   margin-bottom: 0.7rem;
   color: #333333;
   font-size: 1.2rem;
 }
 
-.home-article-list .list-group-item .excerpt {
+.list-group-item .excerpt {
   margin-bottom: 0.6rem;
   font-size: 0.8rem;
 }
 
-.home-article-list .list-group-item .create_date {
+.list-group-item .create_date {
   font-size: 0.8rem;
   color: #777;
   margin: 0;
 }
 
-.home-article-list .list-group-item .user {
+.list-group-item .user {
   font-size: 0.8rem;
   color: #777;
+}
+
+.list-group-item .like {
+  vertical-align: middle;
+}
+
+.list-group-item .like .like-icon {
+  color: #777;
+}
+
+.list-group-item .like .liked {
+  color: #E1255E;
+}
+
+.list-group-item .like .like_count {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.list-group-item .like .js-like_id {
+  display: none;
 }
 
 .article {
@@ -17186,6 +17207,28 @@ img.account_logo {
   margin: 0 auto;
   width: 100%;
   height: auto;
+}
+
+.profile-posts-list .posts-list-menu {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  background: #fff;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: none;
+}
+
+.profile-posts-list .posts-list-menu li a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  transition: background-color 0.4s;
+}
+
+.profile-posts-list .posts-list-menu li a:hover {
+  background-color: #eee;
 }
 
 /*  delete post
