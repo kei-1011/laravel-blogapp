@@ -94,4 +94,78 @@ $(function () {
             $('ul.account_menu').toggleClass('is-open');
     });
 
+    /**
+     * いいね機能
+     */
+    $(document).on('click', '.add_like', function () {
+        var post_id = $(this).attr("data-post");
+        var user_id = $(this).attr("data-user");
+        let icon = $(this).find('i');
+        let count = $(this).next('.like_count');
+
+        $(this).removeClass('add_like');
+        $(this).addClass('remove_like');
+        icon.removeClass('far');
+        icon.addClass('fas');
+        icon.addClass('liked');
+
+        $.ajax({
+            type: 'POST',
+            url: `/${post_id}/likes/`,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                user_id: user_id,
+                post_id: post_id,
+            },
+            dataType: 'json'
+        }).done(function (res) {
+            count.text(res.count);
+            $('#like-id_' + post_id).text(res.like_id);
+            // $(this).attr("data-like",res.like_id);
+        }).fail(function (XMLHttpRequest, textStatus, error) {
+            alert(error);
+        });
+    });
+
+    /**
+     * いいね削除機能
+     */
+    $(document).on('click', '.remove_like', function () {
+        var post_id = $(this).attr("data-post");
+        var user_id = $(this).attr("data-user");
+        var like_id = $('#like-id_' + post_id).text();
+
+        let icon = $(this).find('i');
+        let count = $(this).next('.like_count');
+
+        $(this).removeClass('remove_like');
+        $(this).addClass('add_like');
+        icon.removeClass('fas');
+        icon.removeClass('liked');
+        icon.addClass('far');
+        icon.addClass('like-icon');
+
+        $.ajax({
+            type: 'POST',
+            url: `/likes/${like_id}`,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                like_id: like_id,
+                user_id: user_id,
+                post_id: post_id,
+            },
+            dataType: 'json'
+        }).done(function (res) {
+            $('#like-id_' + post_id).text("");
+            count.text(res);
+        }).fail(function (XMLHttpRequest, textStatus, error) {
+            alert(error);
+        });
+    });
+
+
 });

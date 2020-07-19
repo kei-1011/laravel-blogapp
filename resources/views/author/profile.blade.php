@@ -6,11 +6,6 @@
     <div class="row justify-content-center">
         <div class="col-md-3">
             <div class="profile-panel text-center">
-                {{-- <div class="btn-wrap">
-                    <button type="button" id="ac-menu_open">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                </div> --}}
                 <p class="profile_image mb-3">
                     <img src="/storage/images/user/{{$user->profile_image}}" alt="">
                 </p>
@@ -38,6 +33,21 @@
                 <p class='mb-0'>
                     <span class="user">by {{ $user->name }}</span>
                     <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>
+                    <span class="like btn-wrap">
+                        @if ($post->likedBy(Auth::user())->count() > 0)
+                        {{-- いいね済 --}}
+                            <button type="button" class="remove_like" data-user="{{$post->user->id}}" data-post="{{$post->id}}"><i class="fas fa-heart liked"></i>
+                            </button>
+                            <span class="like_count">{{$post->likeCount()}}</span>
+                            <span class="js-like_id" id="like-id_{{$post->id}}">
+                                {{ $post->getLikeId(Auth::user()) }}
+                            </span>
+                            @else
+                            <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
+                            </button>
+                            <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                        @endif
+                    </span>
                 </p>
             </li>
             @endforeach

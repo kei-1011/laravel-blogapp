@@ -39,8 +39,13 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('/posts/edit/{id}', 'PostsController@showEditForm')->name('posts.edit');
   Route::post('/posts/edit/{id}', 'PostsController@edit');
 
+  //いいね処理
+  Route::post('/{post_id}/likes', 'LikesController@store');
 
-  // Route::post('/following', 'FollowController@follow');
+  //いいね取消処理
+  Route::post('/likes/{like_id}', 'LikesController@destroy');
+
+// Route::post('/following', 'FollowController@follow');
 });
 
 Auth::routes();

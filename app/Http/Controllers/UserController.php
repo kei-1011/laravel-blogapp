@@ -12,9 +12,7 @@ class UserController extends Controller
 
         $user = User::where('name',$user)->first();
         $posts = Posts::where('user_id',$user_id)->get();
-        // $posts = $user->posts()->get();
 
-        // var_dump($posts);
         return view('author.profile',[
             'user'  =>  $user,
             'posts' =>  $posts,
