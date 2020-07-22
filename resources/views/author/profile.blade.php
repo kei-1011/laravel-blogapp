@@ -15,9 +15,8 @@
                     <a href="https://twitter.com/{{$user->twitter}}"><i class="fab fa-twitter"></i></a>
                 </p>
                 <p class="referral">{{$user->referral}}</p>
-                @if (Auth::check())
+                @if (Auth::user()->id === $user->id)
                     <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
-
                 @else
                     <button type='button' id='follow_btn' class='btn btn-primary'>フォローする</button>
                 @endif
