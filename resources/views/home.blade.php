@@ -26,6 +26,8 @@
                                 <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
                                 </button>
                                 <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                                <span class="js-like_id" id="like-id_{{$post->id}}">
+
                             @endif
                         @else
                             <i class="far fa-heart like-icon"></i>

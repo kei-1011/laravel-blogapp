@@ -17180,6 +17180,20 @@ img.account_logo {
   color: #777;
 }
 
+.profile-panel .data-count {
+  display: flex;
+}
+
+.profile-panel .data-count .child {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.profile-panel .data-count .child span {
+  font-size: 1rem;
+}
+
 .btn-wrap {
   text-align: right;
 }

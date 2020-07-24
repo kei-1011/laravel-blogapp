@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container profile-posts-list">
     <div class="row justify-content-center">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="profile-panel text-center">
                 <p class="profile_image mb-3">
                     <img src="/storage/images/user/{{$user->profile_image}}" alt="">
@@ -14,17 +13,39 @@
                 <p class="twitter text-center">
                     <a href="https://twitter.com/{{$user->twitter}}"><i class="fab fa-twitter"></i></a>
                 </p>
-                <p class="referral">{{$user->referral}}</p>
-                @if (Auth::check())
+                <div class="text-left">
+                    <p class="referral">{{$user->referral}}</p>
+                </div>
+                <div class="data-count mb-3">
+                    <div class="child">
+                        <span>記事</span>
+                        <span>{{$user->posts->count()}}</span>
+                    </div>
+                    <div class="child">
+                        <span>フォロー</span>
+                        <span>{{$user->followCount()}}</span>
+                    </div>
+                    <div class="child">
+                        <span>フォロワー</span>
+                        <span>{{$user->followers()}}</span>
+                    </div>
+                </div>
+                @if (Auth::user()->id === $user->id)
                     <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
-
                 @else
-                    <button type='button' id='follow_btn' class='btn btn-primary'>フォローする</button>
+                    @if ($user->isfollow($user->id) === 0)
+                        <div class="follow-btn">
+                            <button type='submit' id='follow' class='follow btn btn-info' data-user='{{$user->id}}' data-follow='{{Auth::user()->id}}'>フォロー</button>
+                        </div>
+                    @else
+                        <div class="follow-btn">
+                            <button type='submit' id='unfollow' class='followed btn btn-primary' data-user='{{$user->id}}' data-follow='{{Auth::user()->id}}'>フォロー中</button>
+                        </div>
+                    @endif
                 @endif
             </div>
-
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <ul class="posts-list-menu">
                 <li>
                     <a href="{{ route('author.profile',['user' => $user->name , 'user_id' => $user->id])}}">全ての投稿</a>
@@ -55,6 +76,7 @@
                                 <button type="button" class="add_like" data-post="{{$post->id}}" data-user="{{$post->user->id}}"><i class="far fa-heart like-icon"></i>
                                 </button>
                                 <span class="like_count">{{$post->likeCount($post->id)}}</span>
+                                <span class="js-like_id" id="like-id_{{$post->id}}">
                             @endif
                         @else
                             <i class="far fa-heart like-icon"></i>

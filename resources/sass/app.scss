@@ -172,6 +172,19 @@ img.account_logo {
     text-align: center;
     color: #777;
   }
+  .data-count{
+    display: flex;
+
+    .child {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 
 .btn-wrap {
