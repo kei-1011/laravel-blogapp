@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Follow;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,12 @@ class User extends Authenticatable
 
     public function likes() {
         return $this->hasMany('App\Like');
+    }
+    public function follows() {
+        return $this->hasMany('App\Follow');
+    }
+
+    public function followers() {
+        return Follow::where('user_id', $this->id)->count();
     }
 }

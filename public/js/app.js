@@ -49824,6 +49824,27 @@ $(function () {
       alert(error);
     });
   });
+  $(document).on('click', '.follow', function () {
+    var user_id = $(this).data('user');
+    var following_id = $(this).data('following');
+    $(this).text('フォロー中').removeClass('follow').removeClass('btn-info').addClass('unfollow').addClass('btn-primary');
+    $.ajax({
+      type: 'POST',
+      url: "/follow/".concat(user_id),
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+        user_id: user_id,
+        following_id: following_id
+      },
+      dataType: 'json'
+    }).done(function (res) {// $('#like-id_' + post_id).text("");
+      // count.text(res);
+    }).fail(function (XMLHttpRequest, textStatus, error) {
+      alert(error);
+    });
+  });
 });
 
 /***/ }),

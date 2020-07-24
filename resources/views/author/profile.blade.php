@@ -18,7 +18,7 @@
                 @if (Auth::user()->id === $user->id)
                     <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
                 @else
-                    <button type='button' id='follow_btn' class='btn btn-primary'>フォローする</button>
+            <button type='button' class='follow btn btn-info btn-primary' data-user='{{$user->id}}' data-following='{{Auth::user()->id}}'>フォローする</button>
                 @endif
             </div>
 

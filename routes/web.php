@@ -45,7 +45,8 @@ Route::group(['middleware' => 'auth'], function() {
   //いいね取消処理
   Route::post('/likes/{like_id}', 'LikesController@destroy');
 
-// Route::post('/following', 'FollowController@follow');
+  Route::post('/follow/{user_id}', 'FollowController@follow');
+  // Route::post('/follow/{user_id}/{following_id}', 'FollowController@unfollow');
 });
 
 Auth::routes();

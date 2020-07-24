@@ -166,5 +166,31 @@ $(function () {
         });
     });
 
+    $(document).on('click', '.follow', function () {
+        let user_id = $(this).data('user');
+        let following_id = $(this).data('following');
+
+        $(this).text('フォロー中')
+            .removeClass('follow').removeClass('btn-info')
+            .addClass('unfollow').addClass('btn-primary');
+
+        $.ajax({
+            type: 'POST',
+            url: `/follow/${user_id}`,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                user_id: user_id,
+                following_id: following_id,
+            },
+            dataType: 'json'
+        }).done(function (res) {
+            // $('#like-id_' + post_id).text("");
+            // count.text(res);
+        }).fail(function (XMLHttpRequest, textStatus, error) {
+            alert(error);
+        });
+    });
 
 });
