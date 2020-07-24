@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function showLikeList(string $user,int $user_id) {
         $user = User::where('name',$user)->first();
-        $likes = Like::where('user_id',$user_id)->paginate(10);
+        $likes = Like::where('user_id',$user_id)->get();
 
         $empty = 'いいねしている記事はまだありません。';
 
