@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
           <section class='article'>
             <div class="article__head">
               <span class="user"><a href="{{ route('author.profile',['user' => $post->user->name, 'user_id' => $post->user->id]) }}">by {{ $post->user->name }}</a></span>
