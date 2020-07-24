@@ -38,6 +38,7 @@
             </li>
             @endforeach
             </ul>
+            {{ $posts->links() }}
         </div>
     </div>
 </div>

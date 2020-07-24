@@ -11,7 +11,7 @@
             </div>
               <h1 class='article__heading'>{{ $post->title }}</h1>
               <div class="contents">
-                {{ $post->body }}
+                {!! nl2br($post->body) !!}
               </div>
           </section>
         </div>
