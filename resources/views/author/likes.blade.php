@@ -4,9 +4,9 @@
 
 <div class="container profile-posts-list">
     <div class="row justify-content-center">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="profile-panel text-center">
-                <p class="profile_image mb-3">
+                <p class="profile_image mb-4">
                     <img src="/storage/images/user/{{$user->profile_image}}" alt="">
                 </p>
                 <p class="screen_name mb-0 text-center">{{$user->screen_name}}</p>
@@ -24,7 +24,7 @@
             </div>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <ul class="posts-list-menu">
                 <li>
                     <a href="{{ route('author.profile',['user' => $user->name , 'user_id' => $user->id])}}">全ての投稿</a>
@@ -39,7 +39,6 @@
                 {{$empty}}
             </li>
             @else
-
                     @foreach($posts as $post)
                 <li class="list-group-item">
                     <a class='title' href="{{ route('posts.article', ['user' => $user->name,'id' => $post->id, 'user_id' => $user->id] ) }} ">{{ $post->title }}</a>
@@ -73,7 +72,6 @@
             @endif
 
             </ul>
-            {{ $posts->links() }}
         </div>
     </div>
 </div>
