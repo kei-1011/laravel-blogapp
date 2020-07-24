@@ -38,7 +38,7 @@ class PostsController extends Controller
 
     // ユーザーが書いた記事一覧
     public function showArchives(string $user) {
-        $posts = Auth::user()->posts()->get();
+        $posts = Auth::user()->posts()->paginate(10);
 
         $user = User::where('name',$user)->first();
 

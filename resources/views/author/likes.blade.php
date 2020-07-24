@@ -73,6 +73,7 @@
             @endif
 
             </ul>
+            {{ $posts->links() }}
         </div>
     </div>
 </div>
