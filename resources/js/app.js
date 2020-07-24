@@ -166,31 +166,57 @@ $(function () {
         });
     });
 
-    $(document).on('click', '.follow', function () {
+    /**
+     * フォロー
+     */
+    $(document).on('click', '#follow', function () {
         let user_id = $(this).data('user');
-        let following_id = $(this).data('following');
-
-        $(this).text('フォロー中')
-            .removeClass('follow').removeClass('btn-info')
-            .addClass('unfollow').addClass('btn-primary');
+        let follow_id = $(this).data('follow');
+        let html = "<button type='submit' id='unfollow' class='followed btn btn-primary' data-user='" + user_id + "' data-follow='" + follow_id + "'>フォロー中</button>";
 
         $.ajax({
             type: 'POST',
-            url: `/follow/${user_id}`,
+            url: `/${user_id}/follow/`,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             data: {
                 user_id: user_id,
-                following_id: following_id,
+                follow_id: follow_id,
             },
-            dataType: 'json'
+            dataType: 'html'
         }).done(function (res) {
-            // $('#like-id_' + post_id).text("");
-            // count.text(res);
+            $('.follow-btn').html(html);
         }).fail(function (XMLHttpRequest, textStatus, error) {
             alert(error);
         });
     });
+
+    /**
+     * フォロー解除
+     */
+    $(document).on('click', '#unfollow', function () {
+        let user_id = $(this).data('user');
+        let follow_id = $(this).data('follow');
+        let html = "<button type='submit' id='follow' class='follow btn btn-info' data-user='" + user_id + "' data-follow='" + follow_id + "'>フォロー中</button>";
+
+        $.ajax({
+            type: 'POST',
+            url: `/${user_id}/unfollow/`,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                user_id: user_id,
+                follow_id: follow_id,
+            },
+            dataType: 'html'
+        }).done(function (res) {
+            $('.follow-btn').html(html);
+        }).fail(function (XMLHttpRequest, textStatus, error) {
+            alert(error);
+        });
+    });
+
 
 });

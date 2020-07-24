@@ -13,7 +13,7 @@ class CreateFollowingTables extends Migration
      */
     public function up()
     {
-        Schema::create('following', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('following_id');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateFollowingTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('following');
+        Schema::dropIfExists('follows');
     }
 }

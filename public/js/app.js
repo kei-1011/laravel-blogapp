@@ -49824,23 +49824,52 @@ $(function () {
       alert(error);
     });
   });
-  $(document).on('click', '.follow', function () {
+  /**
+   * フォロー
+   */
+
+  $(document).on('click', '#follow', function () {
     var user_id = $(this).data('user');
-    var following_id = $(this).data('following');
-    $(this).text('フォロー中').removeClass('follow').removeClass('btn-info').addClass('unfollow').addClass('btn-primary');
+    var follow_id = $(this).data('follow');
+    var html = "<button type='submit' id='unfollow' class='followed btn btn-primary' data-user='" + user_id + "' data-follow='" + follow_id + "'>フォロー中</button>";
     $.ajax({
       type: 'POST',
-      url: "/follow/".concat(user_id),
+      url: "/".concat(user_id, "/follow/"),
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
       data: {
         user_id: user_id,
-        following_id: following_id
+        follow_id: follow_id
       },
-      dataType: 'json'
-    }).done(function (res) {// $('#like-id_' + post_id).text("");
-      // count.text(res);
+      dataType: 'html'
+    }).done(function (res) {
+      $('.follow-btn').html(html);
+    }).fail(function (XMLHttpRequest, textStatus, error) {
+      alert(error);
+    });
+  });
+  /**
+   * フォロー解除
+   */
+
+  $(document).on('click', '#unfollow', function () {
+    var user_id = $(this).data('user');
+    var follow_id = $(this).data('follow');
+    var html = "<button type='submit' id='follow' class='follow btn btn-info' data-user='" + user_id + "' data-follow='" + follow_id + "'>フォロー中</button>";
+    $.ajax({
+      type: 'POST',
+      url: "/".concat(user_id, "/unfollow/"),
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+        user_id: user_id,
+        follow_id: follow_id
+      },
+      dataType: 'html'
+    }).done(function (res) {
+      $('.follow-btn').html(html);
     }).fail(function (XMLHttpRequest, textStatus, error) {
       alert(error);
     });
