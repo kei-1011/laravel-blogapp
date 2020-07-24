@@ -57,6 +57,10 @@ class User extends Authenticatable
         return Follow::where('user_id', $this->id)->count();
     }
 
+    public function followCount() {
+        return Follow::where('following_id', $this->id)->count();
+    }
+
     public function isfollow(int $user_id) {
         $res = DB::table('follows')
         ->where('user_id', $user_id)

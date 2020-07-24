@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container profile-posts-list">
     <div class="row justify-content-center">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="profile-panel text-center">
                 <p class="profile_image mb-3">
                     <img src="/storage/images/user/{{$user->profile_image}}" alt="">
@@ -14,7 +13,23 @@
                 <p class="twitter text-center">
                     <a href="https://twitter.com/{{$user->twitter}}"><i class="fab fa-twitter"></i></a>
                 </p>
-                <p class="referral">{{$user->referral}}</p>
+                <div class="text-left">
+                    <p class="referral">{{$user->referral}}</p>
+                </div>
+                <div class="data-count mb-3">
+                    <div class="child">
+                        <span>記事</span>
+                        <span>{{$user->posts->count()}}</span>
+                    </div>
+                    <div class="child">
+                        <span>フォロー</span>
+                        <span>{{$user->followCount()}}</span>
+                    </div>
+                    <div class="child">
+                        <span>フォロワー</span>
+                        <span>{{$user->followers()}}</span>
+                    </div>
+                </div>
                 @if (Auth::user()->id === $user->id)
                     <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
                 @else
@@ -30,7 +45,7 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <ul class="posts-list-menu">
                 <li>
                     <a href="{{ route('author.profile',['user' => $user->name , 'user_id' => $user->id])}}">全ての投稿</a>
