@@ -14,7 +14,24 @@
                 <p class="twitter text-center">
                     <a href="https://twitter.com/{{$user->twitter}}"><i class="fab fa-twitter"></i></a>
                 </p>
-                <p class="referral">{{$user->referral}}</p>
+                <div class="text-left">
+                    <p class="referral">{{$user->referral}}</p>
+                </div>
+                <div class="data-count mb-3">
+                    <div class="child">
+                        <span>記事</span>
+                        <span>{{$user->posts->count()}}</span>
+                    </div>
+                    <div class="child">
+                        <span>フォロー</span>
+                        <span>{{$user->followCount()}}</span>
+                    </div>
+                    <div class="child">
+                        <span>フォロワー</span>
+                        <span>{{$user->followers()}}</span>
+                    </div>
+                </div>
+
                 @if (Auth::check())
                     <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
 
