@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         // modelクラスのallメソッドで全ての記事を取得
-        $posts = Posts::paginate(10);
+        $posts = Posts::orderBy('created_at', 'desc')->paginate(10);
 
         // テンプレートに全ての記事データを渡す
         return view('home', [
