@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function showProfile(string $user,int $user_id) {
+    public function showProfile(string $user) {
 
         $user = User::where('name',$user)->first();
-        $posts = Posts::where('user_id',$user_id)->paginate(10);
+        $posts = Posts::where('user_id',$user->id)->paginate(10);
 
         return view('author.profile',[
             'user'  =>  $user,
@@ -21,9 +21,9 @@ class UserController extends Controller
         ]);
     }
 
-    public function showLikeList(string $user,int $user_id) {
+    public function showLikeList(string $user) {
         $user = User::where('name',$user)->first();
-        $likes = Like::where('user_id',$user_id)->get();
+        $likes = Like::where('user_id',$user->id)->get();
 
         $empty = 'いいねしている記事はまだありません。';
 

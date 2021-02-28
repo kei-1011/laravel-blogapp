@@ -48,10 +48,10 @@
         <div class="col-md-8">
             <ul class="posts-list-menu">
                 <li>
-                    <a href="{{ route('author.profile',['user' => $user->name , 'user_id' => $user->id])}}">全ての投稿</a>
+                    <a href="{{ route('author.profile',['user' => $user->name])}}">全ての投稿</a>
                 </li>
                 <li>
-                    <a href="{{ route('author.likes',['user' => $user->name , 'user_id' => $user->id])}}">いいね</a>
+                    <a href="{{ route('author.likes',['user' => $user->name])}}">いいね</a>
                 </li>
             </ul>
             <ul class="list-group">

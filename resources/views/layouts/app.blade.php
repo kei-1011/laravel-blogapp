@@ -47,7 +47,7 @@
                                     <a href="{{ route('posts.archive',['user' => Auth::user()->name])}}">記事一覧</a>
                                 </li>
                                 <li>
-                                    <a class="account_logo" href="{{ route('author.profile',['user' => Auth::user()->name , 'user_id' => Auth::id()])}}">プロフィール</a>
+                                    <a class="account_logo" href="{{ route('author.profile',['user' => Auth::user()->name])}}">プロフィール</a>
                                 </li>
                                 <li>
                                     <a href="{{route('setting.account')}}" class="account-settiong">プロフィール編集</a>
