@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="profile-panel text-center">
-                <p class="profile_image mb-4">
+                <p class="profile_image mb-3">
                     <img src="/storage/images/user/{{$user->profile_image}}" alt="">
                 </p>
                 <p class="screen_name mb-0 text-center">{{$user->screen_name}}</p>
@@ -31,23 +31,31 @@
                         <span>{{$user->followers()}}</span>
                     </div>
                 </div>
-
-                @if (Auth::check())
-                    <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
-
-                @else
-                    <button type='button' id='follow_btn' class='btn btn-primary'>フォローする</button>
-                @endif
+                @auth
+                    @if (Auth::user()->id === $user->id)
+                        <a href="{{route('setting.account')}}" class="account-settiong">プロフィールを編集</a>
+                    @else
+                        @if ($user->isfollow($user->id) === 0)
+                            <div class="follow-btn">
+                                <button type='submit' id='follow' class='follow btn btn-info' data-user='{{$user->id}}' data-follow='{{Auth::user()->id}}'>フォロー</button>
+                            </div>
+                        @else
+                            <div class="follow-btn">
+                                <button type='submit' id='unfollow' class='followed btn btn-primary' data-user='{{$user->id}}' data-follow='{{Auth::user()->id}}'>フォロー中</button>
+                            </div>
+                        @endif
+                    @endif
+                @endauth
             </div>
 
         </div>
         <div class="col-md-8">
             <ul class="posts-list-menu">
                 <li>
-                    <a href="{{ route('author.profile',['user' => $user->name , 'user_id' => $user->id])}}">全ての投稿</a>
+                    <a href="{{ route('author.profile',['user' => $user->name])}}">全ての投稿</a>
                 </li>
                 <li>
-                    <a href="{{ route('author.likes',['user' => $user->name , 'user_id' => $user->id])}}">いいね</a>
+                    <a href="{{ route('author.likes',['user' => $user->name])}}">いいね</a>
                 </li>
             </ul>
             <ul class="list-group">

@@ -10,7 +10,7 @@
                 <a class='title' href="{{ route('posts.article', ['id' => $post->id ] ) }} ">{{ $post->title }}</a>
                 <p class="excerpt">{{ $post->body }}</p>
                 <p class='mb-0'>
-                    <span class="user">by <a href="{{ route('author.profile',['user' => $post->user->name , 'user_id' => $post->user->id])}}">{{ $post->user->name }}</a></span>
+                    <span class="user">by <a href="{{ route('author.profile',['user' => $post->user->name])}}">{{ $post->user->name }}</a></span>
                     <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>
                     <span class="like btn-wrap">
                         @if(Auth::check())

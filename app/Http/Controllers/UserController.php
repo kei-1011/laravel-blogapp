@@ -13,7 +13,7 @@ class UserController extends Controller
     public function showProfile(string $user) {
 
         $user = User::where('name',$user)->first();
-        $posts = Posts::where('user_id',$user->id)->paginate(10);
+        $posts = Posts::orderBy('created_at', 'desc')->where('user_id',$user->id)->paginate(10);
 
         return view('author.profile',[
             'user'  =>  $user,
@@ -21,9 +21,9 @@ class UserController extends Controller
         ]);
     }
 
-    public function showLikeList(string $user) {
-        $user = User::where('name',$user)->first();
-        $likes = Like::where('user_id',$user->id)->get();
+    public function showLikeList(string $user_name) {
+        $user = User::where('name',$user_name)->first();
+        $likes = Like::orderBy('created_at', 'DESC')->where('user_id',$user->id)->get();
 
         $empty = 'いいねしている記事はまだありません。';
 
