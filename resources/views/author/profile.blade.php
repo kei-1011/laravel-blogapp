@@ -59,7 +59,7 @@
             <ul class="list-group">
                 @foreach($posts as $post)
             <li class="list-group-item">
-                <a class='title' href="{{ route('posts.article', ['user' => $user->name,'id' => $post->id, 'user_id' => Auth::id()] ) }} ">{{ $post->title }}</a>
+                <a class='title' href="{{ route('posts.article', ['user' => $user->name,'id' => $post->id] ) }} ">{{ $post->title }}</a>
                 <p class="excerpt">{{ $post->body }}</p>
                 <p class='mb-0'>
                     <span class="user">by {{ $user->name }}</span>

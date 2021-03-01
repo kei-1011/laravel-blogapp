@@ -14,7 +14,7 @@
               <div class="posts_wrap">
                 <div class="posts_left">
                 <input type="checkbox" name="delete_post[]" class="delete_post" data-id="{{ $post->id }}">
-                  <a class='title' href="{{ route('posts.article', ['user' => Auth::user()->name, 'id' => $post->id, 'user_id' => Auth::id()] ) }} ">{{ $post->title }}</a>
+                  <a class='title' href="{{ route('posts.article', ['user' => Auth::user()->name, 'id' => $post->id] ) }} ">{{ $post->title }}</a>
                   <p class='mb-0'>
                     <span class="user">by {{ Auth::user()->name }}</span>
                     <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
-    public function showArticle(int $id)
+    public function showArticle(string $user,int $id)
     {
         // getパラメータのidを元に記事データを取得、テンプレートに渡す
         $post = Posts::find($id);

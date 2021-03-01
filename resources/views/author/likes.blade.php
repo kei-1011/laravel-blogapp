@@ -66,10 +66,10 @@
             @else
                     @foreach($posts as $post)
                 <li class="list-group-item">
-                    <a class='title' href="{{ route('posts.article', ['user' => $user->name,'id' => $post->id, 'user_id' => $user->id] ) }} ">{{ $post->title }}</a>
+                    <a class='title' href="{{ route('posts.article', ['user' => $user->name,'id' => $post->id] ) }} ">{{ $post->title }}</a>
                     <p class="excerpt">{{ $post->body }}</p>
                     <p class='mb-0'>
-                        <span class="user">by {{ $user->name }}</span>
+                        <span class="user">by {{ $post->user->name }}</span>
                         <span class="create_date">{{ $post->created_at->format('Y年m月d日') }}</span>
                         <span class="like btn-wrap">
                             @if(Auth::check())

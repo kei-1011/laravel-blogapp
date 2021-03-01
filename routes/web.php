@@ -56,7 +56,7 @@ Auth::routes();
 
 //ユーザープロフィール
 Route::get('{user}/profile', 'UserController@showProfile')->name('author.profile');
-Route::get('{user}/profile/likes', 'UserController@showLikeList')->name('author.likes');
+Route::get('{user}/likes', 'UserController@showLikeList')->name('author.likes');
 
 // 記事ページ
-Route::get('/{id}', 'PostsController@showArticle')->name('posts.article');
+Route::get('{user}/{id}', 'PostsController@showArticle')->name('posts.article');
